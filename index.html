@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8" />
+    <title>Questionnaire CSE</title>
+</head>
+<body>
+    <h1>Questionnaire CSE</h1>
+    <p id="question">Est-ce que vous êtes pour ce que fait le CSE ?</p>
+
+    <button onclick="vote('oui')">Oui</button>
+    <button onclick="vote('non')">Non</button>
+
+    <p id="result" style="font-weight: bold; margin-top: 20px;"></p>
+
+    <script>
+        let ouiCount = 0;
+        let nonCount = 0;
+        let totalVotes = 0;
+
+        function vote(answer) {
+            if(answer === 'oui') {
+                ouiCount++;
+            } else if(answer === 'non') {
+                nonCount++;
+            }
+            totalVotes++;
+
+            const ouiPercent = ((ouiCount / totalVotes) * 100).toFixed(1);
+            const nonPercent = ((nonCount / totalVotes) * 100).toFixed(1);
+
+            document.getElementById('result').textContent = 
+                `Résultats : Oui = ${ouiPercent}%, Non = ${nonPercent}%, Total votes = ${totalVotes}`;
+        }
+    </script>
+</body>
+</html>
